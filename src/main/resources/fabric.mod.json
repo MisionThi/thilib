@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "thilib",
   "version": "${version}",
 
   "name": "Example Mod",
@@ -14,17 +14,18 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/thilib/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "net.mision_thi.thilib.ThiLib"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "thilib.mixins.json"
   ],
+  "accessWidener": "thilib.accesswidener",
 
   "depends": {
     "fabricloader": ">=0.14.9",
