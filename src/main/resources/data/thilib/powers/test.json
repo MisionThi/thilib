@@ -2,7 +2,7 @@
   "type": "thilib:wolf_form",
   "condition": {
     "type": "origins:power_active",
-    "power": "horrorgins:wolf_dummy"
+    "power": "thilib:wolf_dummy"
   },
   "entity_action": {
     "type": "origins:spawn_particles",
