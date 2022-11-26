@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.mision_thi.thilib.ThiLib;
 import net.mision_thi.thilib.mixin.accessor.LivingEntityRendererAccessor;
+import net.mision_thi.thilib.model_data.ModelData;
 import net.mision_thi.thilib.powers.MobModelPower;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -104,6 +105,8 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
             // Check if the power is active & check if the entity isn't null.
             if (power.isActive() & power.modelEntity != null) {
+
+
 
 //                LivingEntity modelEntity = power.modelEntity;
 //                LivingEntityRenderer entityRenderer = (LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(modelEntity);

@@ -4,9 +4,8 @@ public class ModelData {
     private String name;
 
 
-    void Test(String name, String email, String roles, boolean admin) {
+    void Test(String name) {
         this.name = name;
-
     }
 
     public String getName() {

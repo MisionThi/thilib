@@ -1,6 +1,7 @@
 package net.mision_thi.thilib;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;
@@ -27,12 +28,10 @@ public class ThiLib implements ModInitializer {
 		ThilibPowerFactory.register();  //registers the PowerFactories class
 		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new LivingEntityModels());
 
-		ServerLifecycleEvents.END_DATA_PACK_RELOAD.register((((server, resourceManager, success) -> {
-			for (ServerPlayerEntity serverPlayerEntity : server.getPlayerManager().getPlayerList()) {
-				Map<Identifier, ModelData> map = new HashMap<>();
-				ModelDataRegistry.entries().forEach(identifierModelDataEntry -> map.put(identifierModelDataEntry.getKey(),identifierModelDataEntry.getValue()));
-			}
-		})));
+		ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
+			Map<Identifier, ModelData> map = new HashMap<>();
+			ModelDataRegistry.entries().forEach(identifierModelDataEntry -> map.put(identifierModelDataEntry.getKey(),identifierModelDataEntry.getValue()));
+		});
 
 	}
 

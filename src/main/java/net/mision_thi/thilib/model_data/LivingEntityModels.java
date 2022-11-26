@@ -29,6 +29,8 @@ public class LivingEntityModels extends MultiJsonDataLoader implements Identifia
 
     @Override
     protected void apply(Map<Identifier, List<JsonElement>> prepared, ResourceManager manager, Profiler profiler) {
+        // clear caches: How?
+
         prepared.forEach((id, jel) -> {
             for (JsonElement je : jel) {
                 try {
