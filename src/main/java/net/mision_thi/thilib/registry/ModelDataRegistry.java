@@ -4,6 +4,7 @@ import net.minecraft.util.Identifier;
 import net.mision_thi.thilib.model_data.ModelData;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ModelDataRegistry {
     private static final HashMap<Identifier, ModelData> idToModelData = new HashMap<>();
@@ -14,5 +15,9 @@ public class ModelDataRegistry {
 
     public static int size() {
         return idToModelData.size();
+    }
+
+    public static Iterable<Map.Entry<Identifier, ModelData>> entries() {
+        return idToModelData.entrySet();
     }
 }
