@@ -7,11 +7,10 @@ import net.fabricmc.fabric.api.resource.IdentifiableResourceReloadListener;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.profiler.Profiler;
+import net.mision_thi.thilib.ThiLib;
 import net.mision_thi.thilib.data.thilibDataTypes;
+import net.mision_thi.thilib.registry.ModelDataRegistry;
 
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -33,8 +32,8 @@ public class LivingEntityModels extends MultiJsonDataLoader implements Identifia
         prepared.forEach((id, jel) -> {
             for (JsonElement je : jel) {
                 try {
-                    User.Test task = (User.Test) thilibDataTypes.MODELDATA.read(je);
-                    System.out.println(task);
+                    ModelData task = (ModelData) thilibDataTypes.MODELDATA.read(je);
+                    ThiLib.LOGGER.info("Finished Loading model data. number loaded: " + ModelDataRegistry.size());
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
