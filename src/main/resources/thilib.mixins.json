@@ -4,9 +4,12 @@
   "package": "net.mision_thi.thilib.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "PlayerEntityRendererMixin"
+
+    "PlayerEntityRendererMixin",
+    "accessor.LivingEntityRendererAccessor"
   ],
   "client": [
+
 
   ],
   "injectors": {

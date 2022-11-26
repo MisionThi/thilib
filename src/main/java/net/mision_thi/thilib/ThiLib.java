@@ -1,7 +1,10 @@
 package net.mision_thi.thilib;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
+import net.mision_thi.thilib.model_data.LivingEntityModels;
 import net.mision_thi.thilib.registry.ThilibPowerFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +16,7 @@ public class ThiLib implements ModInitializer {
 	public void onInitialize() {	// When the program is run
 		ThiLib.LOGGER.info("Welcome " + MODID);
 		ThilibPowerFactory.register();  //registers the PowerFactories class
+		ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new LivingEntityModels());
 
 	}
 
