@@ -43,10 +43,10 @@ public class LivingEntityModels extends MultiJsonDataLoader implements Identifia
                 }
             }
         });
-//        for (Map.Entry<Identifier, ModelData> value : ModelDataRegistry.entries()) {
-//            ModelData model_data = value.getValue();
-//            ThiLib.LOGGER.info(model_data.getName());
-//        }
+        for (Map.Entry<Identifier, ModelData> value : ModelDataRegistry.entries()) {
+            ModelData model_data = value.getValue();
+        }
+        ThiLib.LOGGER.info("Finished loading Modeldata(s): ", ModelDataRegistry.size());
 
 //        prepared.forEach((id, jel) -> {
 //            for (JsonElement je : jel) {
