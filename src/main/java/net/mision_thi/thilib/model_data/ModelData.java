@@ -4,7 +4,7 @@ public class ModelData {
     private String name;
 
 
-    void Test(String name) {
+    ModelData(String name) {
         this.name = name;
     }
 

@@ -29,19 +29,36 @@ public class LivingEntityModels extends MultiJsonDataLoader implements Identifia
 
     @Override
     protected void apply(Map<Identifier, List<JsonElement>> prepared, ResourceManager manager, Profiler profiler) {
-        // clear caches: How?
-
         prepared.forEach((id, jel) -> {
             for (JsonElement je : jel) {
                 try {
-                    ModelData task = (ModelData) thilibDataTypes.MODELDATA.read(je);
-                    ThiLib.LOGGER.info("Finished Loading model data. number loaded: " + ModelDataRegistry.size());
+//                    ThiLib.LOGGER.info("data models found:",je);
+                    ModelData model_data = (ModelData) thilibDataTypes.MODELDATA.read(je);
+//                    ThiLib.LOGGER.info("data models found:",model_data.getName());
+
+
 
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
             }
         });
+//        for (Map.Entry<Identifier, ModelData> value : ModelDataRegistry.entries()) {
+//            ModelData model_data = value.getValue();
+//            ThiLib.LOGGER.info(model_data.getName());
+//        }
+
+//        prepared.forEach((id, jel) -> {
+//            for (JsonElement je : jel) {
+//                try {
+//                    ModelData task = (ModelData) thilibDataTypes.MODELDATA.read(je);
+//                    ThiLib.LOGGER.info("Finished Loading model data. number loaded: " + ModelDataRegistry.size());
+//
+//                } catch (Exception ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
+//        });
 
     }
 }
