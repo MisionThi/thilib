@@ -22,6 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.mision_thi.thilib.ThiLib;
 import net.mision_thi.thilib.mixin.accessor.LivingEntityRendererAccessor;
+import net.mision_thi.thilib.model_data.LivingEntityModels;
 import net.mision_thi.thilib.model_data.ModelData;
 import net.mision_thi.thilib.powers.MobModelPower;
 import org.spongepowered.asm.mixin.Mixin;
