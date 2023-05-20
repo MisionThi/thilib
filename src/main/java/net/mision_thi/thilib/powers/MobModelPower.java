@@ -13,7 +13,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 
 import net.mision_thi.thilib.ThiLib;

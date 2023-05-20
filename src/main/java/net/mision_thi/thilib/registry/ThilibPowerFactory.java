@@ -2,7 +2,8 @@ package net.mision_thi.thilib.registry;
 
 import io.github.apace100.apoli.power.factory.PowerFactory;
 import io.github.apace100.apoli.registry.ApoliRegistries;
-import net.minecraft.util.registry.Registry;
+
+import net.minecraft.registry.Registry;
 import net.mision_thi.thilib.powers.*;
 
 public class ThilibPowerFactory {

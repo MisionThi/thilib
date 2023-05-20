@@ -13,11 +13,21 @@ public class ModelDataRegistry {
         return UserTest;
     }
 
+    @SuppressWarnings("UnusedReturValue")
+    public static ModelData update(Identifier id, ModelData UserTest) {
+        idToModelData.remove(id);
+        return register(id, UserTest);
+    }
+
     public static int size() {
         return idToModelData.size();
     }
 
     public static Iterable<Map.Entry<Identifier, ModelData>> entries() {
         return idToModelData.entrySet();
+    }
+
+    public static boolean contains(Identifier id) {
+        return idToModelData.containsKey(id);
     }
 }
