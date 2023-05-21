@@ -14,20 +14,13 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
 import net.minecraft.client.render.entity.model.WolfEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 import net.mision_thi.thilib.ThiLib;
-import net.mision_thi.thilib.mixin.accessor.LivingEntityRendererAccessor;
-import net.mision_thi.thilib.model_data.LivingEntityModels;
-import net.mision_thi.thilib.model_data.ModelData;
+import net.mision_thi.thilib.mixin.accessor.WolfEntityModelAccessor;
 import net.mision_thi.thilib.powers.MobModelPower;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -101,31 +94,57 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 
     @Inject(method = "renderArm", at = @At("HEAD"), cancellable = true)
     private void renderPlayerArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, ModelPart arm, ModelPart sleeve, CallbackInfo ci) {
-        if(PowerHolderComponent.hasPower(player, MobModelPower.class)) {
+        if (PowerHolderComponent.hasPower(player, MobModelPower.class)) {
             MobModelPower power = PowerHolderComponent.getPowers(player, MobModelPower.class).get(0);
 
             // Check if the power is active & check if the entity isn't null.
             if (power.isActive() & power.modelEntity != null) {
-
-
-
-//                LivingEntity modelEntity = power.modelEntity;
-//                LivingEntityRenderer entityRenderer = (LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(modelEntity);
-//
-//
-//                EntityModel modelEntityModel = entityRenderer.getModel();
+                // Hardcoded
+//                PlayerEntityModel playerEntityModel = (PlayerEntityModel) this.getModel();
 //                ((PlayerEntityRenderer) (Object) this).setModelPose(player);
-//                modelEntityModel.handSwingProgress = 0.0F;
-//                modelEntityModel.setAngles(modelEntity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+//                playerEntityModel.handSwingProgress = 0.0F;
+//                playerEntityModel.sneaking = false;
+//                playerEntityModel.leaningPitch = 0.0F;
+//                playerEntityModel.setAngles(player, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+//                arm.pitch = 0.0F;
+//                arm.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntitySolid(ThiLib.identifier("textures/entity/wolf.png"))), light, OverlayTexture.DEFAULT_UV);
+//                sleeve.pitch = 0.0F;
+//                sleeve.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(ThiLib.identifier("textures/entity/wolf.png"))), light, OverlayTexture.DEFAULT_UV);
+//                ci.cancel();
+
+//                //// Try
+//                PlayerEntityModel playerEntityModel = (PlayerEntityModel) this.getModel();
+//                ((PlayerEntityRenderer) (Object) this).setModelPose(player);
+//                playerEntityModel.handSwingProgress = 0.0F;
+//                playerEntityModel.sneaking = false;
+//                playerEntityModel.leaningPitch = 0.0F;
+//                playerEntityModel.setAngles(player, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+//                arm.pitch = 0.0F;
+//                arm.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntitySolid(ThiLib.identifier("textures/entity/wolf.png"))),light, OverlayTexture.DEFAULT_UV);
+//                arm.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntitySolid(ThiLib.identifier("textures/entity/wolf.png"))),light,OverlayTexture.DEFAULT_UV );
+//
+//                sleeve.pitch = 0.0F;
+//                sleeve.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(ThiLib.identifier("textures/entity/wolf.png"))), light, OverlayTexture.DEFAULT_UV);
+//                ci.cancel();
+
+//              //Old try
+                LivingEntity modelEntity = power.modelEntity;
+                LivingEntityRenderer entityRenderer = (LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(modelEntity);
+                EntityModel modelEntityModel = entityRenderer.getModel();
+                ((PlayerEntityRenderer) (Object) this).setModelPose(player);
+                modelEntityModel.handSwingProgress = 0.0F;
+                modelEntityModel.setAngles(modelEntity, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 //                modelEntityModel.rightFrontLeg.pitch = 0.0F;
-//                double x = -0.28125;
-//                if(player.getActiveHand().equals(Hand.OFF_HAND)) x *= -1;
-//                matrices.translate(x, -0.75, 0.25);
+//                ((WolfEntityModelAccessor) modelEntityModel).getRightFrontLeg().pitch = 0.0F;
+                double x = -0.28125;
+                if (player.getActiveHand().equals(Hand.OFF_HAND)) x *= -1;
+                matrices.translate(x, -0.75, 0.25);
 //                modelEntity.rightFrontLeg.render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntitySolid(entityRenderer.getTexture(modelEntity))), light, OverlayTexture.DEFAULT_UV);
+                ((WolfEntityModelAccessor) modelEntity).getRightFrontLeg().render(matrices, vertexConsumers.getBuffer(RenderLayer.getEntitySolid(entityRenderer.getTexture(modelEntity))), light, OverlayTexture.DEFAULT_UV);
                 ci.cancel();
+//            }
             }
         }
-    }
 
 //    @Inject(method = "renderRightArm", at = @At("HEAD"), cancellable = true)
 //    private void renderRightArm(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, AbstractClientPlayerEntity player, CallbackInfo ci) {
@@ -142,7 +161,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
 //            }
 //        }
 //    }
-
+    }
 }
 
 

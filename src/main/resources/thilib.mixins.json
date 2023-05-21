@@ -6,7 +6,8 @@
   "mixins": [
 
     "PlayerEntityRendererMixin",
-    "accessor.LivingEntityRendererAccessor"
+    "accessor.LivingEntityRendererAccessor",
+    "accessor.WolfEntityModelAccessor"
   ],
   "client": [
 

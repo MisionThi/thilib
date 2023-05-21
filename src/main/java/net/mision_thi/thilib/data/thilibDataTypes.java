@@ -18,11 +18,11 @@ public class thilibDataTypes {
 
             return null;
         },
-            ((serializableData, UserTest) -> {
-                SerializableData.Instance data = serializableData.new Instance();
-                data.set("name",UserTest.getName());
+        ((serializableData, UserTest) -> {
+            SerializableData.Instance data = serializableData.new Instance();
+            data.set("name",UserTest.getName());
 
-                return data;
-            })
+            return data;
+        })
     );
 }

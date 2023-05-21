@@ -10,6 +10,7 @@ public class ModelDataRegistry {
     private static final HashMap<Identifier, ModelData> idToModelData = new HashMap<>();
 
     public static ModelData register(Identifier id, ModelData UserTest) {
+        idToModelData.put(id, UserTest);
         return UserTest;
     }
 

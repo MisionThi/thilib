@@ -35,6 +35,7 @@ public class LivingEntityModels extends MultiJsonDataLoader implements Identifia
 //                    ThiLib.LOGGER.info("data models found:",je);
                     ModelData model_data = (ModelData) thilibDataTypes.MODELDATA.read(je);
                     ThiLib.LOGGER.info("file found: " + id.getPath());
+                    ThiLib.LOGGER.info(je.getAsJsonObject());
 
                     if(ModelDataRegistry.contains(id)) {
                         ModelDataRegistry.update(id, model_data);
